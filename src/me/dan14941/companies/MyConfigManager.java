@@ -14,6 +14,12 @@ import java.nio.charset.Charset;
 
 import org.bukkit.plugin.java.JavaPlugin;
 
+/*
+* I (dan14941) do not own any of the code in these file!
+* I have downloaded the contents of this file from a link the the bellow youtube video
+* http://m.youtube.com/watch?v=pyBM83LbG9U
+*/
+
 public class MyConfigManager 
 {
 	private JavaPlugin plugin;
