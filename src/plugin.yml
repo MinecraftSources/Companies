@@ -1,0 +1,10 @@
+name: Companies
+version: 0.1
+main: me.dan14941.companies.Companies
+description: A plugin for creating and managing a company!
+softdepend: [Vault]
+
+commands:
+  company:
+    description: The companies plugin command.
+    usage: /company help for commands!
