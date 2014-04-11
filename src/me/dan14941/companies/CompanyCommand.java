@@ -1,5 +1,6 @@
 package me.dan14941.companies;
 
+import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
@@ -31,6 +32,7 @@ public class CompanyCommand implements CommandExecutor
 				player.sendMessage(ChatColor.AQUA + "+== Companies ==+");
 				player.sendMessage(ChatColor.YELLOW + "/company list" + ChatColor.GOLD + " Shows companys");
 				player.sendMessage(ChatColor.YELLOW + "/company <company name>" + ChatColor.GOLD + " Gets information on a company");
+				player.sendMessage(ChatColor.YELLOW + "/company <player name> " + ChatColor.GOLD + "Shows information on a player");
 				
 				if(player.hasPermission("companies.create")) 
 				{
@@ -83,6 +85,10 @@ public class CompanyCommand implements CommandExecutor
 					player.sendMessage(prefix + ChatColor.RED + "You do not have enough permission for this command!");
 				}
 			}
+			//else if(args[0].equalsIgnoreCase(Bukkit.getPlayerExact()))
+			//{
+			//	
+			//}
 		}
 		else 
 		{
