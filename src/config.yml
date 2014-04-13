@@ -1,3 +1,6 @@
 join-message: 
   enabled: true
   message: Welcome, 
+  
+company:
+  price: 750
