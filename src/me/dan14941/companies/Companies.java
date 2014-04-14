@@ -132,11 +132,20 @@ public class Companies extends JavaPlugin implements Listener
 			p.sendMessage(ChatColor.AQUA + getConfig().getString("join-message.message") + " " + p.getName());
 		}
 		
-		//if(playerData.get(p.getName() + ".in-town") == null)
-		//{
-			//playerData.set(p.getName() + ".in-town", false);
-			//playerData.saveConfig();
-		//}
-		
+		if(newPData.getBoolean(p.getName() + "company.in-company", true))
+		{
+			logger.info("[Companies] Config file for " + p.getDisplayName() + " already exists!");
+		}
+		else if(newPData.getBoolean(p.getName() + "company.in-company", false))
+		{
+			logger.info("[Companies] Config file for " + p.getDisplayName() + " already exists!");
+			newPData.addDefault(p.getName() + "company.in-company", false); 
+			savePConfig();
+		}
+		else
+		{
+			newPData.addDefault(p.getName() + "company.in-company", false); 
+			savePConfig();
+		}
 	}
 }
