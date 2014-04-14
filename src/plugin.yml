@@ -1,5 +1,5 @@
 name: Companies
-version: 0.1
+version: 0.1.1
 main: me.dan14941.companies.Companies
 description: A plugin for creating and managing a company!
 softdepend: [Vault]
