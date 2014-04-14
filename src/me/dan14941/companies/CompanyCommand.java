@@ -1,6 +1,8 @@
 package me.dan14941.companies;
 
 //import org.bukkit.Bukkit;
+import java.util.List;
+
 import org.bukkit.ChatColor;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
@@ -44,6 +46,69 @@ public class CompanyCommand implements CommandExecutor
 				}
 				player.sendMessage(ChatColor.YELLOW + "/company leave" + ChatColor.GOLD + " Leave your company");
 			}
+			else if(args[0].equalsIgnoreCase("create") && player.hasPermission("companies.create"))
+			{
+				if(args.length == 1)
+				{
+					player.sendMessage(prefix + ChatColor.RED + "/company create <company name>");
+				}
+				else if(args.length > 2)
+				{
+					player.sendMessage(prefix + ChatColor.RED + "/company create <company name>");
+				}
+				else if(args.length == 2)
+				{
+					if(plugin.newPData.getBoolean(player.getName() + ".company.in-company", true))
+					{
+						player.sendMessage(prefix + ChatColor.RED + "You are already in a company!");
+					}
+					else
+					{
+						plugin.newPData.set(player.getName() + "company.in-company", true);
+						plugin.newPData.set(player.getName() + "company.company", args[1]);
+						plugin.savePConfig();
+						
+						plugin.newCData.set("company." + args[1] + ".boss", player.getName());
+						plugin.saveCConfig();
+						player.sendMessage(prefix + ChatColor.GOLD + "You created the company: " + args[1]);
+					}
+				}
+			}
+			else if(args[0].equalsIgnoreCase("list"))
+			{
+				List<String> companies = null;
+				companies = plugin.newCData.getStringList("companies");
+				
+				int pageNumberMax;
+				
+				if(!(companies.size() < 5))
+				{
+					pageNumberMax = companies.size() / 6;
+				}
+				else
+				{
+					pageNumberMax = 1;
+				}
+				
+				if(!(companies.size() > 6))
+				{
+					player.sendMessage(ChatColor.AQUA + "+== Companies ==+");
+					for(int i = 0; i < companies.size(); i++)
+					{
+						player.sendMessage(ChatColor.YELLOW + companies.get(i));
+						player.sendMessage(ChatColor.GREEN + "page: 1/" + pageNumberMax);
+					}
+				}
+				else if(companies.size() > 6);
+				{
+					player.sendMessage(ChatColor.AQUA + "+== Companies ==+");
+					for(int i = 0; i < companies.size(); i++)
+					{
+						player.sendMessage(ChatColor.YELLOW + companies.get(i));
+						player.sendMessage(ChatColor.GREEN + "page: 1/" + pageNumberMax);
+					}
+				}
+			}
 			else if(args[0].equalsIgnoreCase("config")) 
 			{
 				if (player.hasPermission("companies.config")) 
@@ -85,10 +150,6 @@ public class CompanyCommand implements CommandExecutor
 					player.sendMessage(prefix + ChatColor.RED + "You do not have enough permission for this command!");
 				}
 			}
-			//else if(args[0].equalsIgnoreCase(Bukkit.getPlayerExact()))
-			//{
-			//	
-			//}
 		}
 		else 
 		{

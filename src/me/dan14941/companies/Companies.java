@@ -90,7 +90,7 @@ public class Companies extends JavaPlugin implements Listener
 		//Updater updater = new Updater(this, id, this.getFile(), Updater.UpdateType.DEFAULT, false);
 	}
 	
-	public void saveCData() 
+	public void saveCConfig() 
 	{
 		try 
 		{
