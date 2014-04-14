@@ -58,12 +58,12 @@ public class Companies extends JavaPlugin implements Listener
 		cData = new File(getDataFolder(), "company-data.yml");
 		newCData = YamlConfiguration.loadConfiguration(cData);
 		newCData.options().copyDefaults(true);
-		saveCData();
+		saveCConfig();
 		
 		pData = new File(getDataFolder(), "player-data.yml");
 		newPData = YamlConfiguration.loadConfiguration(pData);
 		newPData.options().copyDefaults(true);
-		savePData();
+		savePConfig();
 		
 		logger.info(name + " Loading stats...");
 		try {
@@ -103,13 +103,13 @@ public class Companies extends JavaPlugin implements Listener
 		}
 	}
 	
-	public void savePData() 
+	public void savePConfig()
 	{
-		try 
+		try
 		{
 			newPData.save(pData);
 
-		} 
+		}
 		catch (Exception e) 
 		{
 			e.printStackTrace();
